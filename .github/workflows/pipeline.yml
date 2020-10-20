@@ -2,11 +2,7 @@
 # GitHub Actions Workflow CI/CD
 #
 
-on:
-  push:
-    branches: [ '*' ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
   test:
@@ -30,7 +26,7 @@ jobs:
 
   deploy:
     name: deploy
-    needs: [ test, build ]
+    needs: [test, build]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     
